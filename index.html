@@ -182,6 +182,7 @@
                 day: 1,
                 lat: 48.9984,
                 lng: 2.0963,
+                address: '11 Allée Emile Cohl, 78700 Conflans-Sainte-Honorine',
                 desc: 'Départ tranquille avec la 308 Break. La voiture idéale et économique pour ce petit périple.',
                 photoTip: 'Avant de partir, une petite photo sur les quais de Seine avec les péniches au confluent de l\'Oise. La lumière du matin y est souvent belle.',
                 mandatory: true
@@ -192,6 +193,7 @@
                 day: 1,
                 lat: 49.1939,
                 lng: 2.4853,
+                address: 'Château de Chantilly, 60500 Chantilly',
                 desc: 'Environ 45 min de route. Un des plus majestueux châteaux de France. Promenez-vous dans les jardins de Le Nôtre sans forcément faire la visite complète si vous voulez préserver votre énergie.',
                 photoTip: 'Placez-vous face aux grands plans d\'eau pour avoir le reflet parfait du château dans l\'eau avec Thi Hoa au premier plan.',
                 icon: 'castle'
@@ -202,6 +204,7 @@
                 day: 1,
                 lat: 49.3472,
                 lng: 2.9792,
+                address: 'Château de Pierrefonds, Rue Viollet le Duc, 60350 Pierrefonds',
                 desc: 'Un crochet magique vers un château tout droit sorti d\'un conte de fées, réinventé par Viollet-le-Duc.',
                 photoTip: 'Le meilleur spot photo se trouve depuis la rive du petit lac en contrebas, avec les tours gigantesques qui s\'élèvent en arrière-plan.',
                 icon: 'castle'
@@ -212,6 +215,7 @@
                 day: 1,
                 lat: 49.8941,
                 lng: 2.2957,
+                address: 'Cathédrale Notre-Dame d\'Amiens, 80000 Amiens',
                 desc: 'Arrivée en fin de journée. Capitale de la Picardie, idéale pour se reposer.',
                 hotelTip: "Hôtels sûrs et bien placés :<br>1. <b>Hôtel Le Prieuré</b> : Au pied de la cathédrale, très calme, charme ancien.<br>2. <b>Ibis Styles Amiens Centre</b> : Valeur sûre, très proche de la zone piétonne.<br><br><i>Note Sécurité : Restez dans l'hypercentre (Cathédrale / St-Leu). Évitez le secteur de la gare tard le soir et les quartiers Nord.</i>",
                 photoTip: 'Le soir, baladez-vous dans le quartier Saint-Leu (la petite Venise du Nord) au bord des canaux, et devant la Cathédrale illuminée.',
@@ -224,6 +228,7 @@
                 day: 2,
                 lat: 50.2910,
                 lng: 2.7772,
+                address: 'Grand\'Place, 62000 Arras',
                 desc: 'Départ d\'Amiens après un bon petit-déjeuner. Direction Arras pour admirer l\'architecture flamande et ses 155 maisons en briques parfaitement alignées.',
                 photoTip: 'Installez-vous sur la Grand\'Place pour une photo grand angle montrant l\'alignement unique des façades baroques.',
                 icon: 'camera'
@@ -234,6 +239,7 @@
                 day: 2,
                 lat: 50.6292,
                 lng: 3.0573,
+                address: 'Place du Général de Gaulle, 59800 Lille',
                 desc: 'Dernière étape dans la capitale des Flandres. Flânerie dans les ruelles pavées du Vieux-Lille. Ne repartez pas sans goûter une gaufre Méert !',
                 photoTip: 'Les petites rues pavées autour de la Treille ou sur la Place du Général de Gaulle (Grand Place) offrent des décors briques rouges parfaits.',
                 icon: 'coffee'
@@ -244,6 +250,7 @@
                 day: 2,
                 lat: 48.9984,
                 lng: 2.0963,
+                address: '11 Allée Emile Cohl, 78700 Conflans-Sainte-Honorine',
                 desc: 'Retour direct via l\'autoroute A1. Environ 2h30 de route avec la 308 Break. Reposez-vous bien !',
                 mandatory: true,
                 icon: 'home'
@@ -314,10 +321,15 @@
             const origin = activeSteps[0];
             const destination = activeSteps[activeSteps.length - 1];
             
-            let mapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${origin.lat},${origin.lng}&destination=${destination.lat},${destination.lng}`;
+            const originStr = origin.address ? encodeURIComponent(origin.address) : `${origin.lat},${origin.lng}`;
+            const destStr = destination.address ? encodeURIComponent(destination.address) : `${destination.lat},${destination.lng}`;
+
+            let mapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${originStr}&destination=${destStr}`;
             
             if (activeSteps.length > 2) {
-                const waypoints = activeSteps.slice(1, -1).map(s => `${s.lat},${s.lng}`).join('|');
+                const waypoints = activeSteps.slice(1, -1).map(s => {
+                    return s.address ? encodeURIComponent(s.address) : `${s.lat},${s.lng}`;
+                }).join('|');
                 mapsUrl += `&waypoints=${waypoints}`;
             }
             
