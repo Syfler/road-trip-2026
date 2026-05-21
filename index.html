@@ -174,7 +174,7 @@
         // Initialisation des icônes Lucide
         lucide.createIcons();
 
-        // Données de l'itinéraire optimisé (2 Jours / 1 Nuit)
+        // Données de l'itinéraire complet (Toutes les propositions de Thi Hoa)
         const allSteps = [
             {
                 id: 'conflans',
@@ -183,8 +183,8 @@
                 lat: 48.9984,
                 lng: 2.0963,
                 address: '11 Allée Emile Cohl, 78700 Conflans-Sainte-Honorine',
-                desc: 'Départ tranquille avec la 308 Break. La voiture idéale et économique pour ce petit périple.',
-                photoTip: 'Avant de partir, une petite photo sur les quais de Seine avec les péniches au confluent de l\'Oise. La lumière du matin y est souvent belle.',
+                desc: 'Départ tranquille avec la 308 Break. Musée de la Batellerie et promenade sur les quais pour bien démarrer.',
+                photoTip: 'Avant de partir, une petite photo sur les quais de Seine avec les péniches au confluent de l\'Oise.',
                 mandatory: true
             },
             {
@@ -194,8 +194,30 @@
                 lat: 49.1939,
                 lng: 2.4853,
                 address: 'Château de Chantilly, 60500 Chantilly',
-                desc: 'Environ 45 min de route. Un des plus majestueux châteaux de France. Promenez-vous dans les jardins de Le Nôtre sans forcément faire la visite complète si vous voulez préserver votre énergie.',
+                desc: 'Un des plus majestueux châteaux de France et le musée Condé.',
                 photoTip: 'Placez-vous face aux grands plans d\'eau pour avoir le reflet parfait du château dans l\'eau avec Thi Hoa au premier plan.',
+                icon: 'castle'
+            },
+            {
+                id: 'senlis',
+                title: 'Cité médiévale de Senlis',
+                day: 1,
+                lat: 49.2064,
+                lng: 2.5855,
+                address: 'Place Notre Dame, 60300 Senlis',
+                desc: 'Léger crochet (15 min). Ruelles pavées et remparts gallo-romains.',
+                photoTip: 'Prenez la pose dans les ruelles pavées pittoresques autour de la cathédrale pour une ambiance cinématographique française.',
+                icon: 'camera'
+            },
+            {
+                id: 'compiegne',
+                title: 'Palais de Compiègne',
+                day: 1,
+                lat: 49.4187,
+                lng: 2.8277,
+                address: 'Palais de Compiègne, Place du Général de Gaulle, 60200 Compiègne',
+                desc: 'Résidence royale et impériale au style néoclassique grandiose s\'ouvrant sur la forêt.',
+                photoTip: 'Une belle photo romantique dans le vaste parc majestueux avec le palais en arrière-plan.',
                 icon: 'castle'
             },
             {
@@ -205,22 +227,55 @@
                 lat: 49.3472,
                 lng: 2.9792,
                 address: 'Château de Pierrefonds, Rue Viollet le Duc, 60350 Pierrefonds',
-                desc: 'Un crochet magique vers un château tout droit sorti d\'un conte de fées, réinventé par Viollet-le-Duc.',
-                photoTip: 'Le meilleur spot photo se trouve depuis la rive du petit lac en contrebas, avec les tours gigantesques qui s\'élèvent en arrière-plan.',
+                desc: 'Château tout droit sorti d\'un conte de fées, réinventé par Viollet-le-Duc. Décor de nombreux films.',
+                photoTip: 'Le meilleur spot photo se trouve depuis la rive du petit lac en contrebas, avec les tours monumentales qui s\'élèvent.',
                 icon: 'castle'
             },
             {
+                id: 'gerberoy',
+                title: 'Gerberoy',
+                day: 1,
+                lat: 49.5342,
+                lng: 1.8497,
+                address: 'Mairie, 60380 Gerberoy',
+                desc: 'L\'un des Plus Beaux Villages de France, célèbre pour ses roses et ses maisons à colombages.',
+                photoTip: 'Capturez la poésie du lieu en photographiant Thi Hoa devant une façade fleurie de rosiers grimpants.',
+                icon: 'flower' // Utilisera une icône par défaut ou la plus proche si flower n'est pas dispo
+            },
+            {
                 id: 'amiens_nuit',
-                title: 'Nuitée & Dîner : Amiens',
+                title: 'Amiens (Cathédrale & Saint-Leu)',
                 day: 1,
                 lat: 49.8941,
                 lng: 2.2957,
                 address: 'Cathédrale Notre-Dame d\'Amiens, 80000 Amiens',
-                desc: 'Arrivée en fin de journée. Capitale de la Picardie, idéale pour se reposer.',
+                desc: 'Capitale picarde (Maison Jules Verne, Hortillonnages). Nuitée idéale pour se reposer.',
                 hotelTip: "Hôtels sûrs et bien placés :<br>1. <b>Hôtel Le Prieuré</b> : Au pied de la cathédrale, très calme, charme ancien.<br>2. <b>Ibis Styles Amiens Centre</b> : Valeur sûre, très proche de la zone piétonne.<br><br><i>Note Sécurité : Restez dans l'hypercentre (Cathédrale / St-Leu). Évitez le secteur de la gare tard le soir et les quartiers Nord.</i>",
-                photoTip: 'Le soir, baladez-vous dans le quartier Saint-Leu (la petite Venise du Nord) au bord des canaux, et devant la Cathédrale illuminée.',
+                photoTip: 'Le soir, baladez-vous dans le quartier Saint-Leu (la petite Venise du Nord) au bord des canaux.',
                 icon: 'moon',
                 mandatory: true
+            },
+            {
+                id: 'albert',
+                title: 'Albert & Somme 1916',
+                day: 2,
+                lat: 50.0036,
+                lng: 2.6483,
+                address: 'Musée Somme 1916, Rue Anicet Godin, 80300 Albert',
+                desc: 'Musée souterrain impressionnant et majestueuse Basilique Notre-Dame de Brebières.',
+                photoTip: 'Photographiez la célèbre statue dorée de la Vierge qui domine le clocher de la Basilique.',
+                icon: 'camera'
+            },
+            {
+                id: 'thiepval',
+                title: 'Mémorial de Thiepval',
+                day: 2,
+                lat: 50.0543,
+                lng: 2.6857,
+                address: 'Mémorial de Thiepval, 80300 Thiepval',
+                desc: 'Plus grand mémorial britannique au monde et le Trou de mine de Lochnagar (Ovillers).',
+                photoTip: 'L\'immense structure de brique et de pierre offre un cadre très solennel et géométrique pour des photos saisissantes.',
+                icon: 'camera'
             },
             {
                 id: 'arras',
@@ -229,20 +284,64 @@
                 lat: 50.2910,
                 lng: 2.7772,
                 address: 'Grand\'Place, 62000 Arras',
-                desc: 'Départ d\'Amiens après un bon petit-déjeuner. Direction Arras pour admirer l\'architecture flamande et ses 155 maisons en briques parfaitement alignées.',
+                desc: 'Architecture flamande unique et Beffroi (UNESCO).',
                 photoTip: 'Installez-vous sur la Grand\'Place pour une photo grand angle montrant l\'alignement unique des façades baroques.',
                 icon: 'camera'
             },
             {
                 id: 'lille',
-                title: 'Le Vieux-Lille',
+                title: 'Le Vieux-Lille & Beaux-Arts',
                 day: 2,
                 lat: 50.6292,
                 lng: 3.0573,
                 address: 'Place du Général de Gaulle, 59800 Lille',
-                desc: 'Dernière étape dans la capitale des Flandres. Flânerie dans les ruelles pavées du Vieux-Lille. Ne repartez pas sans goûter une gaufre Méert !',
-                photoTip: 'Les petites rues pavées autour de la Treille ou sur la Place du Général de Gaulle (Grand Place) offrent des décors briques rouges parfaits.',
+                desc: 'Capitale des Flandres, gaufres Méert et un des plus grands musées d\'art.',
+                photoTip: 'Les petites rues pavées autour de la Treille offrent des décors briques rouges parfaits.',
                 icon: 'coffee'
+            },
+            {
+                id: 'roubaix',
+                title: 'Roubaix - La Piscine',
+                day: 2,
+                lat: 50.6926,
+                lng: 3.1664,
+                address: 'La Piscine, 23 Rue de l\'Espérance, 59100 Roubaix',
+                desc: 'Musée d\'art incroyable installé dans une ancienne piscine Art déco.',
+                photoTip: 'Le cliché incontournable : l\'ancien bassin baigné de lumière sous l\'immense vitrail en demi-lune.',
+                icon: 'camera'
+            },
+            {
+                id: 'saintquentin',
+                title: 'Saint-Quentin',
+                day: 2,
+                lat: 49.8471,
+                lng: 3.2874,
+                address: 'Place de l\'Hôtel de Ville, 02100 Saint-Quentin',
+                desc: 'Capitale de l\'architecture Art déco et du gothique flamboyant.',
+                photoTip: 'Prenez un beau cliché de la façade sculptée de l\'Hôtel de Ville depuis la place centrale.',
+                icon: 'camera'
+            },
+            {
+                id: 'noyon',
+                title: 'Noyon',
+                day: 2,
+                lat: 49.5815,
+                lng: 2.9995,
+                address: 'Cathédrale Notre-Dame de Noyon, 60400 Noyon',
+                desc: 'Cité royale historique, calme absolu autour de la cathédrale.',
+                photoTip: 'Une photo paisible dans le quartier des anciennes maisons canoniales autour de la cathédrale.',
+                icon: 'camera'
+            },
+            {
+                id: 'lisleadam',
+                title: 'L\'Isle-Adam',
+                day: 2,
+                lat: 49.1118,
+                lng: 2.2152,
+                address: 'Mairie, 95290 L\'Isle-Adam',
+                desc: 'La "ville parc" romantique au bord de l\'Oise, prisée par Balzac.',
+                photoTip: 'Une dernière photo très romantique sur les ponts anciens avec l\'Oise en contrebas.',
+                icon: 'camera'
             },
             {
                 id: 'retour',
@@ -251,7 +350,7 @@
                 lat: 48.9984,
                 lng: 2.0963,
                 address: '11 Allée Emile Cohl, 78700 Conflans-Sainte-Honorine',
-                desc: 'Retour direct via l\'autoroute A1. Environ 2h30 de route avec la 308 Break. Reposez-vous bien !',
+                desc: 'Fin du road-trip. Bon repos après ces deux journées riches en découvertes !',
                 mandatory: true,
                 icon: 'home'
             }
